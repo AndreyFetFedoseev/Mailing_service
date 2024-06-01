@@ -76,7 +76,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "mailing_service",
         "USER": "Fet",
         "PASSWORD": "postgresql_shop",
@@ -127,3 +127,6 @@ STATICFILES_DIRS = (BASE_DIR / "static", )
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"

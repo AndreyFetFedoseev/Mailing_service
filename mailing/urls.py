@@ -4,5 +4,5 @@ from mailing.apps import MailingConfig
 app_name = MailingConfig.name
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
 ]
