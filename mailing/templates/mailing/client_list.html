@@ -1,0 +1,22 @@
+{% extends 'mailing/base.html' %}
+{% block client %}
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for client in object_list %}
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h1 class="my-0 fw-normal">{{ client.id }}</h1>
+            </div>
+            <div class="card-body">
+                <h1 class="my-0 fw-normal">{{ client.name }}</h1>
+                <h2 class="card-title pricing-card-title">{{ client.email }}</h2>
+                <a href="{% url 'mailing:client_detail' client.pk %}"
+                   class="btn btn-lg btn-light fw-bold border-white bg-white">Просмотр клиента</a>
+                <a href="{% url 'mailing:client_delete' client.pk %}"
+                   class="btn btn-lg btn-light fw-bold border-white bg-white">Удалить клиента</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

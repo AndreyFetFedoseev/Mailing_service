@@ -1,0 +1,17 @@
+{% extends 'mailing/base.html' %}
+{% block client %}
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h1 class="my-0 fw-normal">{{ object.id }}</h1>
+            </div>
+            <div class="card-body">
+                <h1 class="my-0 fw-normal">{{ object.name }}</h1>
+                <h2 class="card-title pricing-card-title">{{ object.email }}</h2>
+                <h3 class="card-title pricing-card-title">{{ object.comments }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
