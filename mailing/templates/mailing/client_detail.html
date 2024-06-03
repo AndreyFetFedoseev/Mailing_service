@@ -1,17 +1,40 @@
-{% extends 'mailing/base.html' %}
-{% block client %}
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-    <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h1 class="my-0 fw-normal">{{ object.id }}</h1>
-            </div>
-            <div class="card-body">
-                <h1 class="my-0 fw-normal">{{ object.name }}</h1>
-                <h2 class="card-title pricing-card-title">{{ object.email }}</h2>
-                <h3 class="card-title pricing-card-title">{{ object.comments }}</h3>
-            </div>
-        </div>
-    </div>
-</div>
+{% extends 'mailing/base_message.html' %}
+{% block message %}
+<!--<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">-->
+<!--    <div class="col">-->
+<!--        <div class="card mb-4 rounded-3 shadow-sm">-->
+<!--            <div class="card-header py-3">-->
+<!--                <h1 class="my-0 fw-normal">{{ object.id }}</h1>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <h1 class="my-0 fw-normal">{{ object.name }}</h1>-->
+<!--                <h2 class="card-title pricing-card-title">{{ object.email }}</h2>-->
+<!--                <h3 class="card-title pricing-card-title">{{ object.comments }}</h3>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Почта</th>
+        <th scope="col">Комментарий</th>
+        <th scope="col">Действие</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <tr>
+        <th scope="row">{{ object.id }}</th>
+        <td>{{ object.name }}</td>
+        <td>{{ object.email }}</td>
+        <td>{{ object.comments }}</td>
+        <td><a href="{% url 'mailing:update_client' object.pk %}"
+                   class="btn btn-primary">Редактировать</a>
+            <a href="{% url 'mailing:client_delete' object.pk %}"
+                   class="btn btn-danger">Удалить клиента</a></td>
+    </tr>
+    </tbody>
+</table>
 {% endblock %}

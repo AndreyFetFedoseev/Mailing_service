@@ -1,5 +1,5 @@
-{% extends 'mailing/base.html' %}
-{% block client %}
+{% extends 'mailing/base_message.html' %}
+{% block message %}
 <form class="row" method="post">
     <div class="mb-3">
         {% csrf_token %}

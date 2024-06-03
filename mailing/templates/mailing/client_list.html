@@ -1,22 +1,53 @@
-{% extends 'mailing/base.html' %}
-{% block client %}
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-    {% for client in object_list %}
-    <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h1 class="my-0 fw-normal">{{ client.id }}</h1>
-            </div>
-            <div class="card-body">
-                <h1 class="my-0 fw-normal">{{ client.name }}</h1>
-                <h2 class="card-title pricing-card-title">{{ client.email }}</h2>
-                <a href="{% url 'mailing:client_detail' client.pk %}"
-                   class="btn btn-lg btn-light fw-bold border-white bg-white">Просмотр клиента</a>
-                <a href="{% url 'mailing:client_delete' client.pk %}"
-                   class="btn btn-lg btn-light fw-bold border-white bg-white">Удалить клиента</a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div>
+{% extends 'mailing/base_message.html' %}
+{% block message %}
+<!--<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">-->
+<!--    {% for client in object_list %}-->
+<!--    <div class="col">-->
+<!--        <div class="card mb-4 rounded-3 shadow-sm">-->
+<!--            <div class="card-header py-3">-->
+<!--                <h1 class="my-0 fw-normal">{{ client.id }}</h1>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <h1 class="my-0 fw-normal">{{ client.name }}</h1>-->
+<!--                <h2 class="card-title pricing-card-title">{{ client.email }}</h2>-->
+<!--                <a href="{% url 'mailing:client_detail' client.pk %}"-->
+<!--                   class="btn btn-lg btn-light fw-bold border-white bg-white">Просмотр клиента</a>-->
+<!--                <a href="{% url 'mailing:client_delete' client.pk %}"-->
+<!--                   class="btn btn-lg btn-light fw-bold border-white bg-white">Удалить клиента</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+<h1 class="mt-5">Список клиентов для рассылки</h1>
+<!--<p class="lead">Чтобы удержать текущих клиентов, часто используют вспомогательные, или «прогревающие», рассылки-->
+<!--    для информирования и привлечения клиентов.</p>-->
+<a class="btn btn-primary mb-4" href="{% url 'mailing:create_client' %}" role="button">Создать клиента</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Почта</th>
+        <th scope="col">Комментарий</th>
+        <th scope="col">Действие</th>
+    </tr>
+    </thead>
+    {% for object in object_list %}
+    <tbody class="table-group-divider">
+    <tr>
+
+        <th scope="row">{{ object.id }}</th>
+        <td>{{ object.name }}</td>
+        <td>{{ object.email }}</td>
+        <td>{{ object.comments }}</td>
+        <td><a href="{% url 'mailing:client_detail' object.pk %}"
+               class="btn btn-info">Просмотр клиента</a>
+            <a href="{% url 'mailing:client_delete' object.pk %}"
+               class="btn btn-danger">Удалить клиента</a></td>
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>
+<p>Back to <a href="../examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p>
 {% endblock %}

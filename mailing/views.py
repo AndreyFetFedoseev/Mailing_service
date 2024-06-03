@@ -6,7 +6,7 @@ from mailing.models import Client, Message
 
 # Create your views here.
 class MailingView(TemplateView):
-    template_name = "mailing/base_mailing.html"
+    template_name = "mailing/base_message.html"
 
 
 class ClientCreateView(CreateView):
@@ -18,6 +18,7 @@ class ClientCreateView(CreateView):
 class ClientUpdateView(UpdateView):
     model = Client
     fields = ('name', 'email', 'comments')
+    success_url = reverse_lazy('mailing:client_detail')
 
 
 class ClientListView(ListView):
