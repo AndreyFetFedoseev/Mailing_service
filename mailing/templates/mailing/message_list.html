@@ -1,0 +1,22 @@
+{% extends 'mailing/base_message.html' %}
+{% block message %}
+<a class="btn btn-primary mb-4" href="{% url 'mailing:create_message' %}" role="button">Написать сообщение</a>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for message in object_list %}
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h1 class="my-0 fw-normal">{{ message.title }}</h1>
+            </div>
+            <div class="card-body">
+                <h2 class="card-title pricing-card-title">{{ message.content }}</h2>
+                <a href="{% url 'mailing:message_detail' message.pk %}"
+                   class="btn btn-info">Просмотр сообщения</a>
+                <a href="{% url 'mailing:message_delete' message.pk %}"
+                   class="btn btn-danger">Удалить сообщение</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'mailing/base_message.html' %}
+{% block message %}
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h1 class="my-0 fw-normal">{{ object.title }}</h1>
+            </div>
+            <div class="card-body">
+                <h2 class="card-title pricing-card-title">{{ object.content }}</h2>
+                <a href="{% url 'mailing:messages' %}"
+                   class="btn btn-secondary">К списку</a>
+                <a href="{% url 'mailing:message_delete' object.pk %}"
+                   class="btn btn-danger">Удалить сообщение</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
